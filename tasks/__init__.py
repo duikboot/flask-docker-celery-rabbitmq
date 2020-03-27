@@ -1,5 +1,10 @@
+import logging
+import time
+
 from celery import Celery
 import config
+
+logger = logging.getLogger()
 
 
 def make_celery():
@@ -9,3 +14,9 @@ def make_celery():
 
 
 celery = make_celery()
+
+
+@celery.task(bind=True)
+def process_data(self):
+    logger.info("Process data: %s", self)
+    time.sleep(60)

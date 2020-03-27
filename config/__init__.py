@@ -1,7 +1,10 @@
+import logging
 import os
 import sys
 
 import config.settings
+
+logger = logging.getLogger()
 
 # create settings object corresponding to specified env
 APP_ENV = os.environ.get('APP_ENV', 'Dev')

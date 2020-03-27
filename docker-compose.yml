@@ -2,6 +2,8 @@ version: '3'
 services:
  broker-rabbitmq:
    image: "rabbitmq:3.7.14-management"
+   ports:
+     - "15672:15672"
    environment:
      - RABBITMQ_DEFAULT_USER=rabbit_user
      - RABBITMQ_DEFAULT_PASS=rabbit_password
@@ -10,13 +12,6 @@ services:
    environment:
      - POSTGRES_USER=db_user
      - POSTGRES_PASSWORD=db_password
- migration:
-   build: .
-   environment:
-     - APP_ENV=${APP_ENV}
-   command: flask db upgrade
-   depends_on:
-     - db-postgres
  api:
    build: .
    ports:
@@ -26,7 +21,6 @@ services:
    depends_on:
      - broker-rabbitmq
      - db-postgres
-     - migration
  api-worker:
    build: .
    command: celery worker --workdir=. -A tasks.celery --loglevel=info
@@ -35,7 +29,6 @@ services:
    depends_on:
      - broker-rabbitmq
      - db-postgres
-     - migration
  api-beat:
    build: .
    command: celery beat -A tasks.celery --loglevel=info
@@ -44,4 +37,3 @@ services:
    depends_on:
      - broker-rabbitmq
      - db-postgres
-     - migration
