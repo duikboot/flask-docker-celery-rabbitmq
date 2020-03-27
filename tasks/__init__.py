@@ -19,5 +19,5 @@ celery = make_celery()
 @celery.task(bind=True)
 def process_data(self):
     logger.info("Process data: %s", self)
-    time.sleep(60)
+    time.sleep(30)
     return {"succes": "ok"}
