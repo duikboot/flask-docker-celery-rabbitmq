@@ -14,7 +14,7 @@ api = Api(prefix=config.API_PREFIX)
 
 class TaskStatusAPI(Resource):
     def get(self, task_id):
-        task = celery.AsyncResult(task_id)
+        task = tasks.celery.AsyncResult(task_id)
         logger.info("TaskStatusAPI")
         logger.info("Task: %s", task)
 

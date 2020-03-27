@@ -17,13 +17,13 @@ Clone this repository and navigate into it in your terminal.
 Run in development mode, so set APP_ENV environment to Dev
 
     APP_ENV=Dev docker-compose up --build
-    
+
 It will expose 2 ports, one for the flask application (8000) and one for the RabbitMQ management interface (15672)
 
 When it runs, you can test it with a curl post request and check it running in the RabbitMQ interface.
 
     curl --data '{json}' -H 'Content-Type: application/json' 0.0.0.0:8000/api/process_data
 
-Open the RabbitMQ interface in your favorite browser (http://0.0.0.0:15672/) and login:
+Open the RabbitMQ interface in your favorite browser [url](http://0.0.0.0:15672/) and login:
 - username: rabbit_user
 - password: rabbit_password
