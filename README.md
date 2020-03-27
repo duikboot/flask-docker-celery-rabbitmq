@@ -13,6 +13,7 @@ It uses:
 Make sure you have docker and docker-compose installed.
 
 ## Running
+Clone this repository and navigate into it in your terminal.
 Run in Dev mode, so set APP_ENV environment to Dev
 
     APP_ENV=Dev docker-compose up --build
