@@ -20,3 +20,4 @@ celery = make_celery()
 def process_data(self):
     logger.info("Process data: %s", self)
     time.sleep(60)
+    return {"succes": "ok"}
