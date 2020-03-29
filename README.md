@@ -5,6 +5,7 @@ This repository is for running a simple dummy flask application in a docker envi
 It uses:
 - Flask
 - Celery
+- Flower
 - Rabbitmq
 - PostgreSQL (not doing anything, though)
 
@@ -24,7 +25,7 @@ When it runs, you can test it with a curl post request and check it running in t
 
     curl --data '{json}' -H 'Content-Type: application/json' 0.0.0.0:8000/api/process_data
 
-It will return a task_id, which you can search for in RabbitMQ.
+It will return a task_id, which you can search for in Flower [url](http://0.0.0.0:9999/tasks).
 
 Open the RabbitMQ interface in your favorite browser [url](http://0.0.0.0:15672/) and login:
 - username: rabbit_user
