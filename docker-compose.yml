@@ -31,9 +31,11 @@ services:
      - db-postgres
  api-beat:
    build: .
-   command: celery beat -A tasks.celery --loglevel=info
+   command: flower beat -A tasks.celery --loglevel=info --port=9999
    environment:
      - APP_ENV=${APP_ENV}
    depends_on:
      - broker-rabbitmq
      - db-postgres
+   ports:
+    - "9999:9999"
