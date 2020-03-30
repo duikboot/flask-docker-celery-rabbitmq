@@ -21,12 +21,12 @@ Run in development mode, so set APP_ENV environment to Dev
 
 It will expose 2 ports, one for the flask application (8000) and one for the RabbitMQ management interface (15672)
 
-When it runs, you can test it with a curl post request and check it running in the RabbitMQ interface.
+When it runs, you can test it with several curl posts request and check it running in the Flower interface.
 
     curl --data '{json}' -H 'Content-Type: application/json' 0.0.0.0:8000/api/process_data
 
 It will return a task_id, which you can search for in Flower [http://localhost:9999](http://0.0.0.0:9999/tasks).
 
-Open the RabbitMQ interface in your favorite browser [http://localhost:15672](http://0.0.0.0:15672/) and login:
+The RabbitMQ interface [http://localhost:15672](http://0.0.0.0:15672/) with login:
 - username: rabbit_user
 - password: rabbit_password
