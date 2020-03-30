@@ -7,7 +7,7 @@ from flask import jsonify
 import config
 import tasks
 
-logger = logging.getLogger()
+LOGGER = logging.getLogger()
 
 api = Api(prefix=config.API_PREFIX)
 
@@ -16,8 +16,8 @@ class TaskStatusAPI(Resource):
     @staticmethod
     def get(task_id):
         task = tasks.celery.AsyncResult(task_id)
-        logger.info("TaskStatusAPI")
-        logger.info("Task: %s", task)
+        LOGGER.info("TaskStatusAPI")
+        LOGGER.info("Task: %s", task)
         if task.state == 'PENDING':
             time.sleep(1)
             response = {
@@ -42,10 +42,10 @@ class TaskStatusAPI(Resource):
 class DataProcessingAPI(Resource):
     @staticmethod
     def post():
-        logger.info("DataProcessingAPI")
+        LOGGER.info("DataProcessingAPI")
         task = tasks.process_data.delay()
 
-        logger.info("Task: %s", task)
+        LOGGER.info("Task: %s", task)
 
         return {'task_id': task.id}, 200
 

@@ -12,11 +12,11 @@ logging.basicConfig(level=logging.DEBUG,
                     datefmt='%Y-%m-%d %H:%M:%S',
                     handlers=[logging.StreamHandler()])
 
-logger = logging.getLogger()
+LOGGER = logging.getLogger()
 
 
 def create_app():
-    logger.info('Starting app in %s environment', config.APP_ENV)
+    LOGGER.info('Starting app in %s environment', config.APP_ENV)
     app = Flask(__name__)
     app.config.from_object('config')
     api.init_app(app)
