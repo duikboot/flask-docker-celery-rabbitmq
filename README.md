@@ -25,7 +25,7 @@ When it runs, you can test it with several curl posts request and check it runni
 
     curl --data '{json}' -H 'Content-Type: application/json' 0.0.0.0:8000/api/process_data
 
-It will return a task_id, which you can search for in Flower [http://localhost:9999](http://0.0.0.0:9999/tasks).
+It will return a task_id, which you can search for in Flower [http://localhost:8888](http://0.0.0.0:8888/tasks).
 
 The RabbitMQ interface [http://localhost:15672](http://0.0.0.0:15672/) with login:
 - username: rabbit_user
