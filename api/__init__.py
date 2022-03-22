@@ -1,8 +1,8 @@
 import logging
 import time
 
-from flask_restful import Api, Resource
 from flask import jsonify
+from flask_restful import Api, Resource
 
 import config
 import tasks
@@ -48,6 +48,7 @@ class DataProcessingAPI(Resource):
         LOGGER.info("Task: %s", task)
 
         return {'task_id': task.id}, 200
+
 
 # data processing endpoint
 api.add_resource(DataProcessingAPI, '/process_data')
