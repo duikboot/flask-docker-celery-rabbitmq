@@ -21,7 +21,15 @@ services:
    depends_on:
      - broker-rabbitmq
      - db-postgres
- api-worker:
+ api-worker01:
+   build: .
+   command: celery -A tasks.celery worker --loglevel=info
+   environment:
+     - APP_ENV=${APP_ENV}
+   depends_on:
+     - broker-rabbitmq
+     - db-postgres
+ api-worker02:
    build: .
    command: celery -A tasks.celery worker --loglevel=info
    environment:

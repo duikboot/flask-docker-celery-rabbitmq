@@ -1,5 +1,6 @@
 import logging
 import time
+import random
 
 from celery import Celery
 import config
@@ -19,5 +20,5 @@ celery = make_celery()
 @celery.task(bind=True)
 def process_data(self):
     LOGGER.info("Process data: %s", self)
-    time.sleep(30)
+    time.sleep(30*random.random())
     return {"succes": "ok"}
