@@ -23,7 +23,10 @@ It will expose 2 ports, one for the flask application (8000) and one for the Rab
 
 When it runs, you can test it with several curl posts request and check it running in the Flower interface.
 
-    curl --data '{json}' -H 'Content-Type: application/json' 0.0.0.0:8000/api/process_data
+    for value in {1..50}
+    do
+        curl --data '{json}' -H 'Content-Type: application/json' 0.0.0.0:8000/api/process_data
+    done
 
 It will return a task_id, which you can search for in Flower [http://localhost:8888](http://0.0.0.0:8888/tasks).
 
