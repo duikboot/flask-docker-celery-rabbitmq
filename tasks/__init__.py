@@ -20,5 +20,6 @@ celery = make_celery()
 @celery.task(bind=True)
 def process_data(self):
     LOGGER.info("Process data: %s", self)
-    time.sleep(30*random.random())
-    return {"succes": "ok"}
+    sleep = 30*random.random()
+    time.sleep(sleep)
+    return {"succes": "ok", "sleep": round(sleep, 2)}

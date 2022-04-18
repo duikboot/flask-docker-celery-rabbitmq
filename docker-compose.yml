@@ -21,22 +21,28 @@ services:
    depends_on:
      - broker-rabbitmq
      - db-postgres
+   volumes:
+     - .:/flask-deploy
  api-worker01:
    build: .
-   command: celery -A tasks.celery worker --loglevel=info
+   command: watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A tasks.celery worker --loglevel=info
    environment:
      - APP_ENV=${APP_ENV}
    depends_on:
      - broker-rabbitmq
      - db-postgres
+   volumes:
+     - .:/flask-deploy
  api-worker02:
    build: .
-   command: celery -A tasks.celery worker --loglevel=info
+   command: watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A tasks.celery worker --loglevel=info
    environment:
      - APP_ENV=${APP_ENV}
    depends_on:
      - broker-rabbitmq
      - db-postgres
+   volumes:
+     - .:/flask-deploy
  api-beat:
    build: .
    command: celery -A tasks.celery beat --loglevel=info

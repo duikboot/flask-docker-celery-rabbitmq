@@ -12,6 +12,7 @@ flask-restful = "*"
 flask-sqlalchemy = "*"
 flask-migrate = "*"
 celery = "*"
+watchdog = "*"
 
 [requires]
 python_version = "3.9"
