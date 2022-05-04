@@ -16,12 +16,12 @@ def task(task_id):
     LOGGER.info("TaskStatusAPI")
     state = task.state
     LOGGER.info("Task: state: %r", state)
-    if  state == 'PENDING':
+    if state == 'PENDING':
         response = {
             'queue_state': state,
             'status': 'Process is ongoing...',
         }
-    elif  state == 'SUCCESS':
+    elif state == 'SUCCESS':
 
         response = {
             'queue_state': state,
