@@ -14,21 +14,22 @@ api = Api(prefix=config.API_PREFIX)
 def task(task_id):
     task = tasks.celery.AsyncResult(task_id)
     LOGGER.info("TaskStatusAPI")
-    LOGGER.info("Task: %s: state: %r", dir(task), task.state)
-    if task.state == 'PENDING':
+    state = task.state
+    LOGGER.info("Task: state: %r", state)
+    if  state == 'PENDING':
         response = {
-            'queue_state': task.state,
+            'queue_state': state,
             'status': 'Process is ongoing...',
         }
-    elif task.state == 'SUCCESS':
+    elif  state == 'SUCCESS':
 
         response = {
-            'queue_state': task.state,
+            'queue_state': state,
             'result': task.wait()
         }
     else:
         response = {
-            'queue_state': task.state,
+            'queue_state': state,
             'result': task.wait()
         }
     return response
@@ -52,7 +53,7 @@ class DataProcessingAPI(Resource):
         return {'task_id': task.id}, 200
 
 
-class BulkDataProcessingAPI(Resource):
+class GroupDataProcessingAPI(Resource):
     @staticmethod
     def post():
         LOGGER.info("DataProcessingAPI")
@@ -65,6 +66,6 @@ class BulkDataProcessingAPI(Resource):
 
 # data processing endpoint
 api.add_resource(DataProcessingAPI, '/process_data')
-api.add_resource(BulkDataProcessingAPI, '/bulk_process_data')
+api.add_resource(GroupDataProcessingAPI, '/bulk_process_data')
 # task status endpoint
 api.add_resource(TaskStatusAPI, '/tasks/<string:task_id>')

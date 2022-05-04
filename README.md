@@ -19,7 +19,7 @@ Run in development mode, so set APP_ENV environment to Dev
 
     APP_ENV=Dev docker-compose up --build
 
-It will expose 2 ports, one for the flask application (8888) and one for the RabbitMQ management interface (15672)
+It will expose 2 ports, one for the flask application (8888) and one for the RabbitMQ management interface (15672).
 It will also start 2 worker containers.
 
 When it runs, you can test it with several curl posts request and check it running in the Flower interface.
