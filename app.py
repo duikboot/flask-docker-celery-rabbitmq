@@ -18,6 +18,7 @@ LOGGER = logging.getLogger()
 def create_app():
     LOGGER.info('Starting app in %s environment', config.APP_ENV)
     app = Flask(__name__)
+
     app.config.from_object('config')
     api.init_app(app)
     # initialize SQLAlchemy
@@ -34,4 +35,4 @@ def create_app():
 
 if __name__ == "__main__":
     app = create_app()
-    app.run(host='0.0.0.0', port=8000, debug=True)
+    app.run(host='0.0.0.0', port=8888, debug=True)

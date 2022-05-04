@@ -11,6 +11,6 @@ RUN pipenv install --system --skip-lock
 RUN pip install gunicorn[gevent]
 # RUN pip install flower
 
-EXPOSE 8000
+EXPOSE 8888
 
 CMD python app.py
