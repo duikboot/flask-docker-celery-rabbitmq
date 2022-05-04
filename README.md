@@ -32,7 +32,7 @@ When it runs, you can test it with several curl posts request and check it runni
 This will run 50 tasks, you can see in the flower [http://localhost:5556](http://0.0.0.0:5556/)
 how the tasks are distributed between the worker instances.
 
-You can also check the status of a specific task in flask: [http://localhost:8888](http://0.0.0.0:8888/tasks/<task-id>) 
+You can also check the status of a specific task in flask: [http://localhost:8888/api/tasks/<task-id>](http://0.0.0.0:8888/api/tasks/<task-id>) 
 
 The RabbitMQ interface [http://localhost:15673](http://0.0.0.0:15673/) with login:
 - username: rabbit_user
