@@ -57,11 +57,11 @@ class GroupDataProcessingAPI(Resource):
     @staticmethod
     def post():
         LOGGER.info("DataProcessingAPI")
-        task = tasks.control.inspect().registered()
+        task = tasks.process_multiple()
 
         LOGGER.info("Task: %s", task)
 
-        return {'task_id': task.id}, 200
+        return {'task_id': "{}".format(task)}, 200
 
 
 # data processing endpoint

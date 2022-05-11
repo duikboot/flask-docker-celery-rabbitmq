@@ -1,2 +1,12 @@
+DC = docker-compose
+ENV = Dev
+
+
 run:
-	APP_ENV=Dev docker-compose up --build
+	APP_ENV=$(ENV) $(DC) up
+
+up: run
+
+build:
+	APP_ENV=$(ENV) $(DC) build
+
