@@ -1,4 +1,3 @@
-.gitignore
 .venv/
 api/__pycache__/
 config/__pycache__/
