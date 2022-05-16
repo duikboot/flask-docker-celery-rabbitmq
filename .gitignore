@@ -1,0 +1,8 @@
+.gitignore
+.venv/
+api/__pycache__/
+config/__pycache__/
+models/__pycache__/
+strace.log
+tags
+tasks/__pycache__/
