@@ -55,7 +55,7 @@ class DataProcessingAPI(Resource):
 
 class GroupDataProcessingAPI(Resource):
     @staticmethod
-    def post():
+    def get():
         LOGGER.info("DataProcessingAPI")
         task = tasks.process_multiple()
 

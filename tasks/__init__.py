@@ -32,7 +32,7 @@ def process_data():
         raise ValueError("TEST")
 
     time.sleep(sleep)
-    return {"succes": "ok", "sleep": round(sleep, 2)}
+    return {"success": "ok", "sleep": round(sleep, 2)}
 
 
 @celery.task(bind=True)
