@@ -56,4 +56,4 @@ def process_multiple(self,):
     result = jobs.apply_async()
     LOGGER.info("jobs, %r", jobs)
 
-    return {"succes": "ok", "results": result}
+    return {"success": "ok", "results": result}
