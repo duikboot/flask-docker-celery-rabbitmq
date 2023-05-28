@@ -12,17 +12,17 @@ _current = getattr(sys.modules['config.settings'], '{0}Config'.format(APP_ENV))(
 
 # copy attributes to the module for convenience
 
-for atr in [f for f in dir(_current) if '__' not in f]:
+for attr in [f for f in dir(_current) if '__' not in f]:
     # environment can override anything
-    val = os.environ.get(atr, getattr(_current, atr))
-    setattr(sys.modules[__name__], atr, val)
+    val = os.environ.get(attr, getattr(_current, attr))
+    setattr(sys.modules[__name__], attr, val)
 
 
 def as_dict():
     res = {}
 
-    for atr in [f for f in dir(config) if '__' not in f]:
-        val = getattr(config, atr)
-        res[atr] = val
+    for attr in [f for f in dir(config) if '__' not in f]:
+        val = getattr(config, attr)
+        res[attr] = val
 
     return res
