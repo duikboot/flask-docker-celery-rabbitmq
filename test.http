@@ -1,0 +1,11 @@
+GET http://0.0.0.0:8888/api/bulk_process_data
+
+# POST http://0.0.0.0:8888/api/process_data
+# Content-Type: application/json
+#
+# {
+#     "data": "Hello World!"
+# }
+#
+# GET http://0.0.0.0:8888/api/tasks/d62ac7c4-1a16-45a3-ab64-726235f316a6 
+#
