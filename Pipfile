@@ -9,11 +9,11 @@ prospector = "*"
 [packages]
 flask = "*"
 flask-restful = "*"
-flask-sqlalchemy = "*"
-flask-migrate = "*"
+# flask-sqlalchemy = "*"
+# flask-migrate = "*"
 celery = "*"
 watchdog = "*"
 debugpy = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.11"

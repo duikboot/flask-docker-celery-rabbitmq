@@ -1,9 +1,9 @@
 import logging
+import config
 
 from flask import jsonify
 from flask_restful import Api, Resource
 
-import config
 import tasks
 
 LOGGER = logging.getLogger()
@@ -16,22 +16,23 @@ def task(task_id):
     LOGGER.info("TaskStatusAPI")
     state = task.state
     LOGGER.info("Task: state: %r", state)
-    if state == 'PENDING':
-        response = {
-            'queue_state': state,
-            'status': 'Process is ongoing...',
-        }
-    elif state == 'SUCCESS':
 
-        response = {
-            'queue_state': state,
-            'result': task.wait()
-        }
-    else:
-        response = {
-            'queue_state': state,
-            'result': task.wait()
-        }
+    match state:
+        case 'PENDING':
+            response = {
+                'queue_state': state,
+                'status': 'Process is ongoing...',
+            }
+        case 'SUCCESS':
+            response = {
+                'queue_state': state,
+                'result': task.wait()
+            }
+        case _:
+            response = {
+                'queue_state': state,
+                'result': task.wait(),
+            }
     return response
 
 

@@ -36,7 +36,7 @@ def process_data():
 
 
 @celery.task(bind=True)
-def process_multiple(self,):
+def process_multiple(self):
     LOGGER.info("Process bulk data: %s", self)
     # batches = [signature("process_data") for i in range(30)]
     # jobs = process_data.chunks(list(range(10)), 7).group()

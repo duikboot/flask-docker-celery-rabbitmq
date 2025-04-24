@@ -1,8 +1,9 @@
-FROM python:3.9
+FROM python:3.11.7-bookworm
 
+RUN pip install --upgrade pip
 RUN pip install pipenv
 
-ADD . /flask-deploy
+COPY . /flask-deploy
 
 WORKDIR /flask-deploy
 
@@ -13,4 +14,4 @@ RUN pip install gunicorn[gevent]
 
 EXPOSE 8888
 
-CMD python app.py
+CMD [ "python",  "app.py" ]

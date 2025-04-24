@@ -5,7 +5,7 @@ from flask import Flask
 
 from api import api
 import config
-from models import db
+# from models import db
 
 logging.basicConfig(level=logging.DEBUG,
                     format='[%(asctime)s]: {} %(levelname)s %(message)s'.format(os.getpid()),
@@ -22,7 +22,7 @@ def create_app():
     app.config.from_object('config')
     api.init_app(app)
     # initialize SQLAlchemy
-    db.init_app(app)
+    # db.init_app(app)
 
     # define hello world page
 
