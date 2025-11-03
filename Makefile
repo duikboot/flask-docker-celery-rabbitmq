@@ -10,3 +10,6 @@ up: run
 build:
 	APP_ENV=$(ENV) $(DC) build
 
+
+test::
+	python tests.py -vvv
