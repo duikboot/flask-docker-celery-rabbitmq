@@ -27,7 +27,7 @@ services:
       - .:/flask-deploy
   api-worker01:
     build: .
-    command: watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A tasks.celery worker --loglevel=info
+    command: celery -A tasks.celery worker --loglevel=info
     environment:
       - APP_ENV=${APP_ENV}
     depends_on:
@@ -37,7 +37,7 @@ services:
       - .:/flask-deploy
   api-worker02:
     build: .
-    command: watchmedo auto-restart --directory=./ --pattern=*.py --recursive -- celery -A tasks.celery worker --loglevel=info
+    command: celery -A tasks.celery worker --loglevel=info
     environment:
       - APP_ENV=${APP_ENV}
     depends_on:

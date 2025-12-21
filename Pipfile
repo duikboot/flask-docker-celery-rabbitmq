@@ -12,7 +12,6 @@ flask-restful = "*"
 # flask-sqlalchemy = "*"
 # flask-migrate = "*"
 celery = "*"
-watchdog = "*"
 debugpy = "*"
 
 [requires]

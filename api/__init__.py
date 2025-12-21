@@ -11,35 +11,34 @@ LOGGER = logging.getLogger()
 api = Api(prefix=config.API_PREFIX)
 
 
-def task(task_id):
-    task = tasks.celery.AsyncResult(task_id)
+def get_task_result(task):
     LOGGER.info("TaskStatusAPI")
     state = task.state
     LOGGER.info("Task: state: %r", state)
 
     match state:
         case 'PENDING':
-            response = {
+            return {
                 'queue_state': state,
                 'status': 'Process is ongoing...',
             }
         case 'SUCCESS':
-            response = {
+            return {
                 'queue_state': state,
-                'result': task.wait()
+                'result': task.get(timeout=1)  # Use get instead of wait for better control
             }
         case _:
-            response = {
+            return {
                 'queue_state': state,
-                'result': task.wait(),
+                'result': task.get(timeout=1),  # Use get instead of wait for better control
             }
-    return response
 
 
 class TaskStatusAPI(Resource):
     @staticmethod
     def get(task_id):
-        response = task(task_id)
+        task = tasks.celery.AsyncResult(task_id)
+        response = get_task_result(task)
         return jsonify(response)
 
 
